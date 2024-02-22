@@ -17,5 +17,5 @@ Cargo.lock
 # Additional
 .DS_Store
 */.DS_Store
-*.swap
-*/*.swap
+*.swp
+*/*.swp

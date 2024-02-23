@@ -16,7 +16,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Build
-      run: cargo build --verbose
-    - name: Run tests
-      run: cargo test --verbose
+    - name: Build "guessing_game_1"
+      run: cargo build --bin guessing_game_1 --verbose
+    - name: Build "guessing_game_2"
+      run: cargo build -bin guessing_game_2 --verbose

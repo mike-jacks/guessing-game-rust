@@ -19,4 +19,4 @@ jobs:
     - name: Build "guessing_game_1"
       run: cargo build --bin guessing_game_1 --verbose
     - name: Build "guessing_game_2"
-      run: cargo build -bin guessing_game_2 --verbose
+      run: cargo build --bin guessing_game_2 --verbose

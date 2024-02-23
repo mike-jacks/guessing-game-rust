@@ -18,5 +18,13 @@ jobs:
     - uses: actions/checkout@v3
     - name: Build "guessing_game_1"
       run: cargo build --bin guessing_game_1 --verbose
+    - uses: actions/upload-artifact@v4
+      with:
+        name: guessing_game_1_artifact
+        path: target/debug/guessing_game_1
     - name: Build "guessing_game_2"
       run: cargo build --bin guessing_game_2 --verbose
+    - uses: actions/upload-artifact@v4
+      with:
+        name: guessing_game_2_artifact
+        path: target/debug/guessing_game_2

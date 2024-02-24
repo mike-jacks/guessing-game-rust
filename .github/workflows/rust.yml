@@ -10,21 +10,53 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  build:
-
+  build-ubuntu:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
-    - name: Build "guessing_game_1"
-      run: cargo build --bin guessing_game_1 --verbose
+    - name: Build "guessing_game_1" for Ubuntu
+      run: cargo build --bin guessing_game_1 --verbose --release
     - uses: actions/upload-artifact@v4
       with:
-        name: guessing_game_1_artifact
-        path: target/debug/guessing_game_1
-    - name: Build "guessing_game_2"
-      run: cargo build --bin guessing_game_2 --verbose
+        name: guessing_game_1_ubuntu
+        path: target/release/guessing_game_1
+    - name: Build "guessing_game_2" for Ubuntu
+      run: cargo build --bin guessing_game_2 --verbose --release
     - uses: actions/upload-artifact@v4
       with:
-        name: guessing_game_2_artifact
-        path: target/debug/guessing_game_2
+        name: guessing_game_2_ubuntu
+        path: target/release/guessing_game_2
+  
+  build-macos:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build "guessing_game_1" for MacOS
+      run: cargo build --bin guessing_game_1 --verbose --release
+    - uses: actions/upload-artifact@v4
+      with:
+        name: guessing_game_1_MacOS
+        path: target/release/guessing_game_1
+    - name: Build "guessing_game_2" for MacOS
+      run: cargo build --bin guessing_game_2 --verbose --release
+    - uses: actions/upload-artifact@v4
+      with:
+        name: guessing_game_2_MacOS
+        path: target/release/guessing_game_2
+
+  build-windows:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build "guessing_game_1" for Windows
+      run: cargo build --bin guessing_game_1 --verbose --release
+    - uses: actions/upload-artifact@v4
+      with:
+        name: guessing_game_1_Windows
+        path: target/release/guessing_game_1
+    - name: Build "guessing_game_2" for Windows
+      run: cargo build --bin guessing_game_2 --verbose --release
+    - uses: actions/upload-artifact@v4
+      with:
+        name: guessing_game_2_Windows
+        path: target/release/guessing_game_2.exe

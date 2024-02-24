@@ -13,7 +13,7 @@ jobs:
   build-ubuntu:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Build "guessing_game_1" for Ubuntu
       run: cargo build --bin guessing_game_1 --verbose --release
     - name: Build "guessing_game_2" for Ubuntu
@@ -28,7 +28,7 @@ jobs:
   build-macos:
     runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Build "guessing_game_1" for MacOS
       run: cargo build --bin guessing_game_1 --verbose --release
     - name: Build "guessing_game_2" for MacOS
@@ -43,7 +43,7 @@ jobs:
   build-windows:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Build "guessing_game_1" for Windows
       run: cargo build --bin guessing_game_1 --verbose --release
     - name: Build "guessing_game_2" for Windows
@@ -68,8 +68,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          tag_name: ${{ github.ref_name }}
+          release_name: Release ${{ github.ref_name }}
           draft: false
           prerelease: false
 

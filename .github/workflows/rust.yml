@@ -60,3 +60,78 @@ jobs:
       with:
         name: guessing_game_2_Windows
         path: target/release/guessing_game_2.exe
+  
+  create-release:
+    needs: [build-ubuntu, build-macos, build-windows] # Ensures release job runs after build jobs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        draft: false
+        prerelease: false
+
+      - name: Upload Release Asset 1 (ubuntu)
+        uses: actions/upload-release-asset@v1
+        env:
+          github token: ${{ secrets.github_token }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: target/release/guessing_game_1.zip
+          asset_name: guessing_game_1.zip
+          asset_content_type: application/zip
+      
+      - name: Upload Release Asset 2 (ubuntu)
+        uses: actions/upload-release-asset@v1
+        env:
+          github token: ${{ secrets.github_token }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: target/release/guessing_game_2.zip
+          asset_name: guessing_game_2.zip
+          asset_content_type: application/zip
+
+      - name: Upload Release Asset 1 (MacOS)
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: target/release/guessing_game_1.zip
+          asset_name: guessing_game_1.zip
+          asset_content_type: application/zip
+      
+      - name: Upload Release Asset 2 (MacOS)
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: target/release/guessing_game_1.zip
+          asset_name: guessing_game_2.zip
+          asset_content_type: application/zip
+
+      - name: Upload Release Asset 1 (Windows)
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: target/release/guessing_game_1.exe.zip
+          asset_name: guessing_game_1.zip
+          asset_content_type: application/zip
+      
+      - name: Upload Release Asset 2 (Windows)
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: target/release/guessing_game_2.exe.zip
+          asset_name: guessing_game_2.zip
+          asset_content_type: application/zip

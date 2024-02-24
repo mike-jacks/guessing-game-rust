@@ -80,7 +80,7 @@ jobs:
       - name: Download Windows Artifact
         uses: actions/download-artifact@v4
         with:
-          name: guessing_games_windwos.zip
+          name: guessing_games_windows.zip
           path: target/release/
 
       - name: Generate unique tag name

@@ -22,7 +22,7 @@ jobs:
       run: zip -j target/release/guessing_games_ubuntu.zip target/release/guessing_game_1 target/release/guessing_game_2
     - uses: actions/upload-artifact@v4
       with:
-        name: guessing_games_ubuntu
+        name: guessing_games_ubuntu.zip
         path: target/release/guessing_games_ubuntu.zip
   
   build-macos:
@@ -37,7 +37,7 @@ jobs:
       run: zip -j target/release/guessing_games_macos.zip target/release/guessing_game_1 target/release/guessing_game_2
     - uses: actions/upload-artifact@v4
       with:
-        name: guessing_games_macos
+        name: guessing_games_macos.zip
         path: target/release/guessing_games_macos.zip
 
   build-windows:
@@ -52,7 +52,7 @@ jobs:
       run: Compress-Archive -Path target/release/guessing_game_1.exe, target/release/guessing_game_2.exe -DestinationPath target/release/guessing_games_windows.zip
     - uses: actions/upload-artifact@v4
       with:
-        name: guessing_games_windows
+        name: guessing_games_windows.zip
         path: target/release/guessing_games_windows.zip
   
   create-release:

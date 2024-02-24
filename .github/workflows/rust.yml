@@ -58,6 +58,9 @@ jobs:
   create-release:
     needs: [build-ubuntu, build-macos, build-windows] # Ensures release job runs after build jobs
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
     steps:
       - name: Create Release
         id: create_release
